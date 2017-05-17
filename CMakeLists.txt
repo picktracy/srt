@@ -301,7 +301,7 @@ target_link_libraries(${NAME_haicrypt} ${LDFLAGS_haicrypt_STATIC})
 get_target_property(LDFLAGS_haicrypt_RESULT ${NAME_haicrypt} LINK_LIBRARIES)
 #message("HaiCrypt: LDFLAGS: ${LDFLAGS_haicrypt_RESULT}")
 
-install(TARGETS ${NAME_haicrypt} ${srt_install} DESTINATION lib)
+install(TARGETS ${NAME_haicrypt} ${srt_install} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(FILES ${HEADERS_haicrypt} DESTINATION include/haicrypt)
 list(APPEND ALL_LIBS ${NAME_haicrypt})
 
@@ -320,7 +320,7 @@ target_link_libraries(${NAME_haisrt} ${NAME_haicrypt} ${LDFLAGS_srt_STATIC})
 get_target_property(LDFLAGS_srt_RESULT ${NAME_haisrt} LINK_LIBRARIES)
 #message("HaiSRT: LDFLAGS: ${LDFLAGS_srt_RESULT}")
 
-install(TARGETS ${NAME_haisrt} ${srt_install} DESTINATION lib)
+install(TARGETS ${NAME_haisrt} ${srt_install} DESTINATION ${CMAKE_INSTALL_LIBDIR})
 install(FILES ${HEADERS_haisrt} DESTINATION include/srt)
 list(APPEND ALL_LIBS ${NAME_haisrt})
 
@@ -377,7 +377,7 @@ if ( LINUX )
 endif()
 
 configure_file(scripts/haisrt.pc.in haisrt.pc @ONLY)
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/haisrt.pc DESTINATION lib/pkgconfig)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/haisrt.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
 
 # Applications
 
